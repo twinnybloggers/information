@@ -1,6 +1,21 @@
+window.onload = function() {
+    if (typeof jQuery == 'undefined') {
+        var jquery_library = document.createElement('script');
+        jquery_library.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
+        jquery_library.type = 'text/javascript';
+        document.head.appendChild(jquery_library);
+        jquery_library.onload = function() {
+            jquery();
+        };
+    } else {
+        jquery();
+    }
+}
+
+function jquery() {
 
     var svg_js = document.createElement('script');
-    svg_js.src = $_config['url']['home'] + '/static/js/svg.js';
+    svg_js.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
     svg_js.type = 'text/javascript';
     document.head.appendChild(svg_js);
     svg_js.onload = function() {
@@ -515,4 +530,4 @@ function $_GET(sParam) {
             return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
         }
     }
-
+}
