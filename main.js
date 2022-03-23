@@ -1,6 +1,4 @@
 
-function jquery() {
-
     var svg_js = document.createElement('script');
     svg_js.src = $_config['url']['home'] + '/static/js/svg.js';
     svg_js.type = 'text/javascript';
@@ -517,4 +515,4 @@ function $_GET(sParam) {
             return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
         }
     }
-}
+
