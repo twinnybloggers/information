@@ -400,7 +400,7 @@ function live_review() {
 
 function live_sales() {
 
-    var live_sales = 'https://member.kangrian.net/api/sales';
+    var live_sales = 'https://twinnybloggers.github.io/information/sales';
 
     $.getJSON(live_sales, function(data) {
 
