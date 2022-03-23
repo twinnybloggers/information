@@ -1,5 +1,5 @@
 {
-    "status": 20,
+    "status": 500,
     "info": "Ditemukan",
     "result": {
         "1": {
