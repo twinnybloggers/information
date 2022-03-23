@@ -309,7 +309,7 @@ function lightbox() {
 }
 
 function live_review() {
-    var review = 'https://member.kangrian.net/api/review';
+    var review = 'https://twinnybloggers.github.io/information/review.js';
     $.getJSON(review, function(data) {
         if (data && data.status == 200) {
             var i = 0;
