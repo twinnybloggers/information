@@ -1,27 +1,8 @@
 window.onload = function() {
-    if (typeof jQuery == 'undefined') {
-        var jquery_library = document.createElement('script');
-        jquery_library.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
-        jquery_library.type = 'text/javascript';
-        document.head.appendChild(jquery_library);
-        jquery_library.onload = function() {
-            jquery();
-        };
-    } else {
         jquery();
-    }
 }
 
 function jquery() {
-
-    var svg_js = document.createElement('script');
-    svg_js.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
-    svg_js.type = 'text/javascript';
-    document.head.appendChild(svg_js);
-    svg_js.onload = function() {
-        svg();
-    };
-
     if($_GET('aff')) {
         var aff_id = $_GET('aff');
         $.getJSON('https://member.kangrian.net/api/aff-click?id='+aff_id, function(data) {
