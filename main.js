@@ -22,6 +22,12 @@ function jquery() {
         svg();
     };
 
+if($_GET('aff')) {
+        var aff_id = $_GET('aff');
+        $.getJSON('https://member.kangrian.net/api/aff-click?id='+aff_id, function(data) {
+            console.log(data); 
+        });
+    }
 
     $(document).on('submit', '.widget-faq-chat', function(e) {
         e.preventDefault();
