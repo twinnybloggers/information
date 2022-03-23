@@ -1,16 +1,3 @@
-window.onload = function() {
-    if (typeof jQuery == 'undefined') {
-        var jquery_library = document.createElement('script');
-        jquery_library.src = $_config['url']['home'] + '/static/js/jquery.min.js';
-        jquery_library.type = 'text/javascript';
-        document.head.appendChild(jquery_library);
-        jquery_library.onload = function() {
-            jquery();
-        };
-    } else {
-        jquery();
-    }
-}
 
 function jquery() {
 
