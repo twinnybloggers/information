@@ -1,4 +1,19 @@
+window.onload = function() {
+    if (typeof jQuery == 'undefined') {
+        var jquery_library = document.createElement('script');
+        jquery_library.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
+        jquery_library.type = 'text/javascript';
+        document.head.appendChild(jquery_library);
+        jquery_library.onload = function() {
+            jquery();
+        };
+    } else {
+        jquery();
+    }
+}
+
 function jquery() {
+
     var svg_js = document.createElement('script');
     svg_js.src = 'https://blogger.toko-wa.com/static/js/svg.js';
     svg_js.type = 'text/javascript';
@@ -7,6 +22,12 @@ function jquery() {
         svg();
     };
 
+if($_GET('aff')) {
+        var aff_id = $_GET('aff');
+        $.getJSON('https://member.kangrian.net/api/aff-click?id='+aff_id, function(data) {
+            console.log(data); 
+        });
+    }
 
     $(document).on('submit', '.widget-faq-chat', function(e) {
         e.preventDefault();
@@ -16,6 +37,29 @@ function jquery() {
         }
     });
 
+    var scroll_top = $(window).scrollTop();
+
+    if (scroll_top > 0) {
+        $('header').addClass('toggle');
+    } else {
+        $('header').removeClass('toggle');
+    }
+
+    $(document).on('click', '[href*="#"]', function(e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        var target_id = $this.prop('hash');
+        var header_height = $('header').height();
+        var target_offset = $(target_id).offset().top - header_height;
+
+        var body = $("html, body");
+        body.stop();
+        setTimeout(function() {
+            body.animate({ scrollTop: target_offset }, 500, 'swing');
+        }, 1);
+    });
 
     $(window).on('scroll', function() {
         var window_height = $(window).height();
@@ -413,6 +457,14 @@ function live_sales() {
             });
         }
     });
+}
+
+function rupiah(angka) {
+    var rupiah = '';
+    var angkarev = angka.toString().split('').reverse().join('');
+    for (var i = 0; i < angkarev.length; i++)
+        if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+    return 'Rp ' + rupiah.split('', rupiah.length - 1).reverse().join('');
 }
 
 function get_timeago(t) {
