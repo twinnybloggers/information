@@ -400,7 +400,7 @@ function live_review() {
 
 function live_sales() {
 
-    var live_sales = 'https://twinnybloggers.github.io/information/sales.json';
+    var live_sales = 'https://twinnybloggers.github.io/information/sales.js';
 
     $.getJSON(live_sales, function(data) {
 
