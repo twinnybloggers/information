@@ -22,12 +22,6 @@ function jquery() {
         svg();
     };
 
-    if($_GET('aff')) {
-        var aff_id = $_GET('aff');
-        $.getJSON('https://member.kangrian.net/api/aff-click?id='+aff_id, function(data) {
-            console.log(data); 
-        });
-    }
 
     $(document).on('submit', '.widget-faq-chat', function(e) {
         e.preventDefault();
@@ -353,11 +347,8 @@ function lightbox() {
 }
 
 function live_review() {
-
     var review = 'https://member.kangrian.net/api/review';
-
     $.getJSON(review, function(data) {
-
         if (data && data.status == 200) {
             var i = 0;
             $.each(data.result, function(key, value) {
@@ -399,19 +390,12 @@ function live_review() {
 }
 
 function live_sales() {
-
     var live_sales = 'https://twinnybloggers.github.io/information/sales.js';
-
     $.getJSON(live_sales, function(data) {
-
         if (data) {
-
             $('body').append('<div id="live_sales"></div>');
-
             $.each(data.result, function(key, value) {
-
                 var live_sales = $('#live_sales');
-
                 var html5 = '';
                 html5 += '<div class="item" id="' + key + '">';
                 html5 += '<a class="img" href="' + value.payment_file + '" data-lightbox="payment_file" data-lightbox-title="Bukti Pembayaran dari ' + value.buyer + '" data-lightbox-desc="' + get_timeago(value.timestamp) + '"><img src="' + value.payment_file + '"/></a>';
@@ -432,14 +416,11 @@ function live_sales() {
                 }
 
             });
-
             timeago();
-
             var result_length = data.result.length;
             var result_delay = 6000;
             var result_interval = result_delay * 2;
             var counter = 0;
-
             function show_result(result_delay) {
                 setTimeout(function() {
                     $('#live_sales .item').last().addClass('open');
@@ -453,20 +434,14 @@ function live_sales() {
                     }, result_delay);
                 }, 1);
             }
-
             show_result(result_delay);
-
             var i = setInterval(function() {
-
                 show_result(result_delay);
-
                 counter++;
                 if (counter === result_length - 1) {
                     clearInterval(i);
                 }
-
             }, result_interval);
-
             $('#live_sales .item .info .close').on('click', function() {
                 var item = $(this).closest('.item');
                 item.addClass('opened').removeClass('open');
@@ -474,8 +449,6 @@ function live_sales() {
                     item.remove();
                 }, 500);
             });
-
-
         }
     });
 }
